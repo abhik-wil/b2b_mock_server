@@ -6,7 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import { authRouter, b2bRouter } from "./controllers";
 import path from "path";
 const app: Express = express();
-const port = 3000;
+const port = 3009;
 
 const file = fs.readFileSync(path.join(__dirname, "./openapi/openapi.yaml"), "utf8");
 const swaggerDocument = YAML.parse(file);
