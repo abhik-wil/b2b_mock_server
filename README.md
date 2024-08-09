@@ -101,11 +101,10 @@ In case you use mock service you will receive both `sync` and `async` and in cas
 # Diagrams
 
 **DFD Diagram**
-![[./doc/images/Diagram.png]]
+![DFD Diagram](./doc/images/Diagram.png)
 
 **C2 Diagram**
-![[./doc/images/Diagram_C2.png]]
+![C2 Diagram](./doc/images/Diagram_C2.png)
 
 **C4 Diagram**
-![[./doc/images/Diagram_C4.png]]
-
+![C4 Diagram](./doc/images/Diagram_C4.png)
