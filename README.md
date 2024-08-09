@@ -101,10 +101,13 @@ In case you use mock service you will receive both `sync` and `async` and in cas
 # Diagrams
 
 **DFD Diagram**
+
 ![DFD Diagram](./doc/images/Diagram.png)
 
 **C2 Diagram**
+
 ![C2 Diagram](./doc/images/Diagram_C2.png)
 
 **C4 Diagram**
+
 ![C4 Diagram](./doc/images/Diagram_C4.png)
