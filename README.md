@@ -98,10 +98,14 @@ If you receive a NACK as sync response, it indicates there are schema errors in 
 
 In case you use mock service you will receive both `sync` and `async` and in case of sandbox service you will receive only `sync` response with `ACK` and `async` response will be sent back to the respective API end point hosted on your server (bap_uri or bpp_uri sent in context part). 
 
+# Diagrams
 
+**DFD Diagram**
+![[./doc/images/Diagram.png]]
 
+**C2 Diagram**
+![[./doc/images/Diagram_C2.png]]
 
-
-
-
+**C4 Diagram**
+![[./doc/images/Diagram_C4.png]]
 
