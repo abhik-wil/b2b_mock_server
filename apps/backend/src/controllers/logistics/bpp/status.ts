@@ -5,7 +5,8 @@ import YAML from "yaml";
 
 import {
 	responseBuilder,
-	LOGISTICS_EXAMPLES_PATH,
+	LOGISTICS_DOM_EXAMPLES_PATH,
+	LOGISTICS_INT_EXAMPLES_PATH,
 	Item,
 	Fulfillment,
 	Stop,
@@ -45,23 +46,23 @@ export const statusController = async (
 			switch (domain) {
 				case "ONDC:LOG10":
 					directory = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/on_status"
+						LOGISTICS_DOM_EXAMPLES_PATH,
+						"/on_status"
 					);
 					break;
 
 				case "ONDC:LOG11":
 					directory = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Int_Logistics_yaml/on_status"
+						LOGISTICS_INT_EXAMPLES_PATH,
+						"/on_status"
 					);
 					break;
 
 				default:
 					// Fallback to the LOG10 directory if the domain is not recognized
 					directory = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/on_status"
+						LOGISTICS_DOM_EXAMPLES_PATH,
+						"/on_status"
 					);
 					break;
 			}

@@ -3,7 +3,11 @@ import fs from "fs";
 import path from "path";
 import YAML from "yaml";
 
-import { responseBuilder, LOGISTICS_EXAMPLES_PATH } from "../../../lib/utils";
+import {
+	responseBuilder,
+	LOGISTICS_DOM_EXAMPLES_PATH,
+	LOGISTICS_INT_EXAMPLES_PATH,
+} from "../../../lib/utils";
 
 // function getRandomFile(directory: string): string | null {
 // 	const files = fs.readdirSync(directory);
@@ -20,67 +24,56 @@ import { responseBuilder, LOGISTICS_EXAMPLES_PATH } from "../../../lib/utils";
 // }
 
 export const onConfirmController = (
-  req: Request,
-  res: Response,
-  next: NextFunction
+	req: Request,
+	res: Response,
+	next: NextFunction
 ) => {
-  const sandboxMode = res.getHeader("mode") === "sandbox";
-  const { scenario } = req.query;
-    try {
-      const domain = req.body.context.domain;
-			let directory: string;
+	const { scenario } = req.query;
+	try {
+		const domain = req.body.context.domain;
+		let directory: string;
 
-      switch (domain) {
-				case "ONDC:LOG10":
-					directory = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/update"
-					);
-					break;
+		switch (domain) {
+			case "ONDC:LOG10":
+				directory = path.join(LOGISTICS_DOM_EXAMPLES_PATH, "/update");
+				break;
 
-				case "ONDC:LOG11":
-					directory = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Int_Logistics_yaml/update"
-					);
-					break;
+			case "ONDC:LOG11":
+				directory = path.join(LOGISTICS_INT_EXAMPLES_PATH, "/update");
+				break;
 
-				default:
-					// Fallback to the LOG10 directory if the domain is not recognized
-					directory = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/update"
-					);
-					break;
-			}
-      let file;
-      switch(scenario){
-        case "rts":
-          file = path.join(directory, "update_air.yaml");
-          break;
-        default:
-          file = path.join(directory, "update_air_diff.yaml");
+			default:
+				// Fallback to the LOG10 directory if the domain is not recognized
+				directory = path.join(LOGISTICS_DOM_EXAMPLES_PATH, "/update");
+				break;
+		}
+		let file;
+		switch (scenario) {
+			case "rts":
+				file = path.join(directory, "update_air.yaml");
+				break;
+			default:
+				file = path.join(directory, "update_air_diff.yaml");
+		}
+		if (!file) {
+			return null; // Return null or handle this case as needed
+		}
 
-      };
-			if (!file) {
-				return null; // Return null or handle this case as needed
-			}
+		const fileContent = fs.readFileSync(file, "utf8");
+		const response = YAML.parse(fileContent);
 
-			const fileContent = fs.readFileSync(file, "utf8");
-			const response = YAML.parse(fileContent);
-
-			return responseBuilder(
-				res,
-				next,
-				response.value.context,
-				response.value.message,
-				`${req.body.context.bap_uri}${
-					req.body.context.bap_uri.endsWith("/") ? "update" : "/update"
-				}`,
-				`update`,
-				"logistics"
-			);
-    } catch (error) {
-      return next(error)
-    }
+		return responseBuilder(
+			res,
+			next,
+			response.value.context,
+			response.value.message,
+			`${req.body.context.bap_uri}${
+				req.body.context.bap_uri.endsWith("/") ? "update" : "/update"
+			}`,
+			`update`,
+			"logistics"
+		);
+	} catch (error) {
+		return next(error);
+	}
 };

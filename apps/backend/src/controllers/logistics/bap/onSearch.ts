@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import {
 	responseBuilder,
-	LOGISTICS_EXAMPLES_PATH,
+	LOGISTICS_DOM_EXAMPLES_PATH,
+	LOGISTICS_INT_EXAMPLES_PATH
 } from "../../../lib/utils";
 import fs from "fs";
 import path from "path";
@@ -20,8 +21,8 @@ export const onSearchController = async (
 				case "ONDC:LOG10":
 					var file = fs.readFileSync(
 						path.join(
-							LOGISTICS_EXAMPLES_PATH,
-							"/B2B_Dom_Logistics_yaml/init/init_air.yaml"
+							LOGISTICS_DOM_EXAMPLES_PATH,
+							"/init/init_air.yaml"
 						)
 					);
 					init = YAML.parse(file.toString());
@@ -29,8 +30,8 @@ export const onSearchController = async (
 				case "ONDC:LOG11":
 					var file = fs.readFileSync(
 						path.join(
-							LOGISTICS_EXAMPLES_PATH,
-							"/B2B_Int_Logistics_yaml/init/init_air.yaml"
+							LOGISTICS_INT_EXAMPLES_PATH,
+							"/init/init_air.yaml"
 						)
 					);
 					init = YAML.parse(file.toString());
@@ -38,8 +39,8 @@ export const onSearchController = async (
 				default:
 					var file = fs.readFileSync(
 						path.join(
-							LOGISTICS_EXAMPLES_PATH,
-							"/B2B_Dom_Logistics_yaml/init/init_air.yaml"
+							LOGISTICS_DOM_EXAMPLES_PATH,
+							"/init/init_air.yaml"
 						)
 					);
 					init = YAML.parse(file.toString());

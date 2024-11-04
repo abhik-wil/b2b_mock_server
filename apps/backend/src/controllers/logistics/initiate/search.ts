@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import {
 	LOGISTICS_BAP_MOCKSERVER_URL,
-	LOGISTICS_EXAMPLES_PATH,
+	LOGISTICS_DOM_EXAMPLES_PATH,
+	LOGISTICS_INT_EXAMPLES_PATH,
 	MOCKSERVER_ID,
 	send_response,
 } from "../../../lib/utils";
@@ -41,8 +42,8 @@ export const initiateSearchController = async (
 			case "ONDC:LOG10":
 				var file = fs.readFileSync(
 					path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/search/search_by_air_delivery.yaml"
+						LOGISTICS_DOM_EXAMPLES_PATH,
+						"/search/search_by_air_delivery.yaml"
 					)
 				);
 				search = YAML.parse(file.toString());
@@ -50,8 +51,8 @@ export const initiateSearchController = async (
 			case "ONDC:LOG11":
 				var file = fs.readFileSync(
 					path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Int_Logistics_yaml/search/search_by_air_delivery.yaml"
+						LOGISTICS_INT_EXAMPLES_PATH,
+						"/search/search_by_air_delivery.yaml"
 					)
 				);
 				search = YAML.parse(file.toString());
@@ -59,8 +60,8 @@ export const initiateSearchController = async (
 			default:
 				var file = fs.readFileSync(
 					path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/search/search_by_air_delivery.yaml"
+						LOGISTICS_DOM_EXAMPLES_PATH,
+						"/search/search_by_air_delivery.yaml"
 					)
 				);
 				search = YAML.parse(file.toString());

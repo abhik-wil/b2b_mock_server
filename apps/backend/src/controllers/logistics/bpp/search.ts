@@ -4,8 +4,8 @@ import fs from "fs";
 import path from "path";
 import YAML from "yaml";
 import {
-	LOGISTICS_EXAMPLES_PATH,
-	MOCKSERVER_ID,
+	LOGISTICS_DOM_EXAMPLES_PATH,
+	LOGISTICS_INT_EXAMPLES_PATH,
 	responseBuilder,
 	TimeObject,
 } from "../../../lib/utils";
@@ -58,8 +58,8 @@ export const searchController = async (
 			case "ONDC:LOG10":
 				var file = fs.readFileSync(
 					path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/on_search/on_search.yaml"
+						LOGISTICS_DOM_EXAMPLES_PATH,
+						"/on_search/on_search.yaml"
 					)
 				);
 				onSearch = YAML.parse(file.toString());
@@ -67,8 +67,8 @@ export const searchController = async (
 			case "ONDC:LOG11":
 				var file = fs.readFileSync(
 					path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Int_Logistics_yaml/on_search/on_search.yaml"
+						LOGISTICS_INT_EXAMPLES_PATH,
+						"/on_search/on_search.yaml"
 					)
 				);
 				onSearch = YAML.parse(file.toString());
@@ -76,8 +76,8 @@ export const searchController = async (
 			default:
 				var file = fs.readFileSync(
 					path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/on_search/on_search.yaml"
+						LOGISTICS_DOM_EXAMPLES_PATH,
+						"/on_search/on_search.yaml"
 					)
 				);
 				onSearch = YAML.parse(file.toString());

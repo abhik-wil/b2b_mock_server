@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import {
 	responseBuilder,
-	LOGISTICS_EXAMPLES_PATH
+	LOGISTICS_DOM_EXAMPLES_PATH,
+	LOGISTICS_INT_EXAMPLES_PATH,
 } from "../../../lib/utils";
 import fs from "fs";
 import path from "path";
@@ -29,22 +30,22 @@ export const initController = async (
 			switch (domain) {
 				case "ONDC:LOG10":
 					file = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/on_init/"
+						LOGISTICS_DOM_EXAMPLES_PATH,
+						"/on_init/"
 					);
 
 					break;
 				case "ONDC:LOG11":
 					file = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Int_Logistics_yaml/on_init/"
+						LOGISTICS_INT_EXAMPLES_PATH,
+						"/on_init/"
 					);
 
 					break;
 				default:
 					file = path.join(
-						LOGISTICS_EXAMPLES_PATH,
-						"/B2B_Dom_Logistics_yaml/on_init/"
+						LOGISTICS_DOM_EXAMPLES_PATH,
+						"/on_init/"
 					);
 
 					break;

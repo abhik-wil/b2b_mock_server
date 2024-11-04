@@ -2,7 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import {
 	responseBuilder,
 	send_nack,
-	LOGISTICS_EXAMPLES_PATH,
+	LOGISTICS_DOM_EXAMPLES_PATH,
+	LOGISTICS_INT_EXAMPLES_PATH,
 	redis,
 	Stop,
 	Fulfillment,
@@ -31,8 +32,8 @@ export const cancelController = async (
 				case "ONDC:LOG10":
 					var file = fs.readFileSync(
 						path.join(
-							LOGISTICS_EXAMPLES_PATH,
-							"/B2B_Dom_Logistics_yaml/on_cancel/on_cancel.yaml"
+							LOGISTICS_DOM_EXAMPLES_PATH,
+							"/on_cancel/on_cancel.yaml"
 						)
 					);
 					response = YAML.parse(file.toString());
@@ -40,8 +41,8 @@ export const cancelController = async (
 				case "ONDC:LOG11":
 					var file = fs.readFileSync(
 						path.join(
-							LOGISTICS_EXAMPLES_PATH,
-							"/B2B_Int_Logistics_yaml/on_cancel/on_cancel.yaml"
+							LOGISTICS_INT_EXAMPLES_PATH,
+							"/on_cancel/on_cancel.yaml"
 						)
 					);
 					response = YAML.parse(file.toString());
@@ -49,8 +50,8 @@ export const cancelController = async (
 				default:
 					var file = fs.readFileSync(
 						path.join(
-							LOGISTICS_EXAMPLES_PATH,
-							"/B2B_Dom_Logistics_yaml/on_cancel/on_cancel.yaml"
+							LOGISTICS_DOM_EXAMPLES_PATH,
+							"/on_cancel/on_cancel.yaml"
 						)
 					);
 					response = YAML.parse(file.toString());
