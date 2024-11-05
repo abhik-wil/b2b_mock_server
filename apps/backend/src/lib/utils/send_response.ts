@@ -59,6 +59,7 @@ async function send_response(
     }
 
     try{
+      console.log("SENDING TO", uri)
       const response = await axios.post(uri, res_obj, {
         headers: { ...headers },
       });      
@@ -74,6 +75,7 @@ async function send_response(
       );
     } catch(err: any) {
       if(err instanceof AxiosError) {
+        console.log("ERROR While sending response:", err.response?.data)
         res.status(err.response?.status || 500).json(err.response?.data || "")
         return;
       }

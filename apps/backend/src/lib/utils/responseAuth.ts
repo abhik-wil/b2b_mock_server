@@ -12,5 +12,6 @@ export const createAuthHeader = async (message: object) => {
   const header = `Signature keyId="${process.env.SUBSCRIBER_ID}|${
     process.env.UNIQUE_KEY
   }|ed25519",algorithm="ed25519",created="${created}",expires="${expires}",headers="(created) (expires) digest",signature="${signature}"`;
+  console.log("AUTH HEADER", header);
   return header;
 };
